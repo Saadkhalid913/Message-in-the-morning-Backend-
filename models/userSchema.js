@@ -1,6 +1,11 @@
 const config = require("config")
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose");
+
+const emailTemplateSchema = require("./emailTemplateSchema")
+const emailListSchema = require("./emailListSchema")
+const sentEmailSchema = require("./sentEmailSchema")
+
 const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 
@@ -9,9 +14,9 @@ const userSchema = new mongoose.Schema({
   email: {type: String, lowercase: true, match: emailValidationPattern, maxlength: 255, trim: true, unique: true},
   password: {type: String, maxlength: 512},
   contacts: [String],
-  // emailTemplates: [mongoose.Schema.Types.ObjectId],
-  // emailLists: [mongoose.Schema.Types.ObjectId],
-  // sentEmails: [Object]
+  emailLists: {type: [emailListSchema]},
+  emailTemplates: {type: [emailTemplateSchema]},
+  sentEmails: {type: [sentEmailSchema]}
 })
 
 userSchema.methods.generateAuthToken = function() {
