@@ -5,4 +5,4 @@ const userSchema = require("./userSchema")
 const userModel = mongoose.model("users", userSchema);
 
 
-module.exports = { postModel , userModel }
+module.exports = { userModel }
