@@ -16,6 +16,9 @@ router.get("/emails", auth, async (req,res) => {
 })
 
 
+
+
+// WIP
 router.post("/emails/send", auth, async (req,res) => {
     const { recipients, subject, body } = req.body;
     const userID = req._user._id
@@ -25,7 +28,6 @@ router.post("/emails/send", auth, async (req,res) => {
 
     const user = await userModel.findById(userID)
     user.sentEmails.push(sentEmail);
-    console.log(await user.save())
     res.send(sentEmail)
 })
 
