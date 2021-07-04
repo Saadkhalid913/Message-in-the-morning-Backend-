@@ -7,7 +7,11 @@ const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+
 const userSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, minlength: 6, maxlength: 255, trim: true, unique: true},
   email: {type: String, lowercase: true, match: emailValidationPattern, maxlength: 255, trim: true, unique: true},
-  password: {type: String, maxlength: 512}
+  password: {type: String, maxlength: 512},
+  contacts: [String],
+  // emailTemplates: [mongoose.Schema.Types.ObjectId],
+  // emailLists: [mongoose.Schema.Types.ObjectId],
+  // sentEmails: [Object]
 })
 
 userSchema.methods.generateAuthToken = function() {
