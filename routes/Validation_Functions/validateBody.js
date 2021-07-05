@@ -8,12 +8,5 @@ function ValidateRequest(req,res,next,fields) {
   }
 
 
-function ValidateEmailList(req,res,next) {
-    if (!ValidateRequest(req,res,next, ["name", "recipients"]))
-        return
-    else
-        next()
-}
 
-
-module.exports = {ValidateEmailList}
+module.exports = {}
