@@ -16,8 +16,6 @@ router.get("/emails", auth, async (req,res) => {
 })
 
 
-
-
 // WIP
 router.post("/emails/send", auth, async (req,res) => {
     const { recipients, subject, body } = req.body;

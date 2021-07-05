@@ -14,9 +14,12 @@ app.use(cors({origin: "*"}))
 
 const userRouter = require("./routes/users")
 const emailRouter = require("./routes/email")
+const emailListRouter = require("./routes/emailLists")
+
 
 app.use("/api", userRouter)
 app.use("/api", emailRouter)
+app.use("/api", emailListRouter)
 
 
 
