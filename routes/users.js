@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt")
 const config =require("config");
 const auth = require("../middlewear/auth_user")
+const {ValidateSignup} = require("./Validation_Functions/validateBody") 
 
 const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -61,24 +62,7 @@ function ValidateRequest(req,res,next,fields) {
   return true 
 }
 
-function ValidateSignup(req,res,next) {
 
-  if (!ValidateRequest(req,res,next, ["username" , "email", "password"])) return
-
-  const { username, email, password } = req.body
-  if (!(username.length >= 6)) {
-    return res.send({error: "Please provide a username >= 6 characters in length"})
-  }
-  if (!email.match(emailValidationPattern)) {
-   return res.send({error: "Please provide a valid email"})
-  }
-
-  if (!(password.length >= 8)) {
-    return res.send({error: "Please provide a password >= 8 characters in length"})
-  }
-
-  next()
-}
 
 
 
