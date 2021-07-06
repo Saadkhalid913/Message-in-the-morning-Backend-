@@ -8,7 +8,7 @@ const messageSchema = new mongoose.Schema({
     body: String,
     link: String,
     timeCreated: {type: Date, default: Date.now(), immutable: true},
-    timeToSend: {type: Date, set: setSendDate, immutable:true}
+    timeToSend: {type: Date, default: setSendDate(), immutable:true}
 })
 
 

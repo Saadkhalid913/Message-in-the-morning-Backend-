@@ -4,7 +4,7 @@ const config = require("config")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 
-mongoose.connect("mongodb://localhost:27017/emailDB")
+mongoose.connect("mongodb://localhost:27017/emailDB", {useNewUrlParser: true, useUnifiedTopology: true})
 
 const app = express()
 
@@ -13,9 +13,10 @@ app.use(cors({origin: "*"}))
 
 
 const userRouter = require("./routes/users")
-
+const messageRouter = require("./routes/messages")
 
 app.use("/api", userRouter)
+app.use("/api", messageRouter)
 
 
 
