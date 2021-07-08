@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/messages", auth, async (req,res) => {
     const userID = req._user._id
     const user = await userModel.findById(userID);
-    const messages = userModel.messages;
+    const messages = user.messages;
     res.send(messages)
 })
 
@@ -20,6 +20,7 @@ router.get("/messages/recent", auth, async (req,res) => {
     const user = await userModel.findById(userID);
     let messages = user.messages;
     recentMessages = messages.filter(m => (CurrentTimeInMilliseconds - m.timeCreated.getTime()) < MillisecondsInDay )
+    res.send(recentMessages)
 })
 
 router.post("/messages", auth, async (req,res) => {
