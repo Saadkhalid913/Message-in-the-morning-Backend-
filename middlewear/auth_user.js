@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken")
 const { userModel } = require("../models/models")
 
 module.exports = async function(req,res,next) {
+  console.log(req.body)
   if (!(req.body.user_auth_token || req.headers.user_auth_token) ) return res.send({error: "no token provided"})
   const token = req.body.user_auth_token || req.headers.user_auth_token
   try {
