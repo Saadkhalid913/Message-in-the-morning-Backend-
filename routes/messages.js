@@ -19,7 +19,7 @@ router.get("/messages/recent", auth, async (req,res) => {
     const userID = req._user._id
     const user = await userModel.findById(userID);
     let messages = user.messages;
-    recentMessages = messages.filter(m => (CurrentTimeInMilliseconds - m.timeCreated.getTime()) < MillisecondsInDay )
+    recentMessages = messages.filter(m => (m.timeCreated.valueOf() + MillisecondsInDay > CurrentTimeInMilliseconds))
     res.send(recentMessages)
 })
 
