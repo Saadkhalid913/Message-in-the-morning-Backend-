@@ -36,7 +36,6 @@ router.post("/users/signup" , ValidateSignup,  async (req,res,next) => {
 
 
 router.post("/users/login", async (req,res) => {
-  console.log(req.body)
   const { username, password } = req.body
   if (!username.match(emailValidationPattern)) {
     user = await userModel.findOne({username : username})
