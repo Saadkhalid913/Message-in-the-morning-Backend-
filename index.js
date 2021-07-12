@@ -20,9 +20,10 @@ app.use(cors({origin: "*"}))
 
 const userRouter = require("./routes/users")
 const messageRouter = require("./routes/messages")
-
+const staticRouter=  require("./routes/static")
 app.use("/api", userRouter)
 app.use("/api", messageRouter)
+app.use("/static", staticRouter)
 
 
 
