@@ -4,7 +4,9 @@ const config = require("config")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 
-mongoose.connect("mongodb://localhost:27017/emailDB", {useNewUrlParser: true, useUnifiedTopology: true})
+const URI = config.get("URI")
+
+mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true})
 
 const app = express()
 
