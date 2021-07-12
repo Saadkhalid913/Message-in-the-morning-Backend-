@@ -5,6 +5,10 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 
 const URI = config.get("URI")
+const key = config.get("key")
+
+if (!URI) throw new Error("No URI provided")
+if (!key) throw new Error("No key provided")
 
 mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true})
 
