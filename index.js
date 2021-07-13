@@ -16,7 +16,11 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({origin: "*"}))
-
+// app.use((req,res, next) => {
+//     console.log(req.body)
+//     console.log(req.headers)
+//     next()
+// })
 
 const userRouter = require("./routes/users")
 const messageRouter = require("./routes/messages")

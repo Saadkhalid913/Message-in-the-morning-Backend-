@@ -7,7 +7,8 @@ const messageSchema = new mongoose.Schema({
     title: String, 
     body: String,
     link: String,
-    timeCreated: {type: Date, default: Date.now()}
+    timeCreated: {type: Date, default: Date.now}
 })
+
 
 module.exports = messageSchema

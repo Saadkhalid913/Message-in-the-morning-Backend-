@@ -33,5 +33,18 @@ router.post("/messages", auth, async (req,res) => {
     res.send(message)
 })
 
+router.post("/messages/delete/:id", auth, async (req,res) => {
+    const userID = req._user._id
+    const id = req.params.id;
+
+    const user = await userModel.findById(userID);
+    const index = user.messages.findIndex(m => m._id.toString() === id)
+    if (index < 0) return res.send(null)
+    const message = user.messages[index]
+    user.messages.splice(index, 1)
+    await user.save()
+    res.send(message)
+})
+
 
 module.exports = router;
