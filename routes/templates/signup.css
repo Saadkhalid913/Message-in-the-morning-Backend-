@@ -29,9 +29,10 @@ body {
 .signup-wrapper > div {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 75%;
     margin: 0.5rem;
-    height: 100%
+    height: 100%;
+
 
 }
 
