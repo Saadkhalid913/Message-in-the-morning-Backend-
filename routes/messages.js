@@ -14,7 +14,7 @@ router.get("/messages", auth, async (req,res) => {
 })
 
 router.get("/messages/recent", auth, async (req,res) => {
-    const MillisecondsInDay = 846000000
+    const MillisecondsInDay = 1000 * 60 * 60 * 24
     const CurrentTimeInMilliseconds = Date.now()
     const userID = req._user._id
     const user = await userModel.findById(userID);
